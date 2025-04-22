@@ -1,4 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Leaflet Next Map Application
+
+This is a [Next.js](https://nextjs.org) project with [React-Leaflet](https://react-leaflet.js.org/) that provides an interactive map experience.
+
+## Features
+
+- Interactive fullscreen map centered on Bangkok, Thailand
+- Dynamic markers with custom popups
+- User geolocation tracking
+- Custom marker icons
+- Map tile switching (Standard, Satellite, and Hybrid views)
+- Free drawing tools on the map
+
+## Tech Stack
+
+- Next.js 15.3.1 (App Router)
+- TypeScript
+- Tailwind CSS
+- React-Leaflet v5
+- Leaflet Draw
 
 ## Getting Started
 
@@ -14,20 +33,15 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the map application.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Next.js and React-Leaflet, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React-Leaflet Documentation](https://react-leaflet.js.org/)
+- [Leaflet Documentation](https://leafletjs.com/reference.html)
 
 ## Deploy on Vercel
 
