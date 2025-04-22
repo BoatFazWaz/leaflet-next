@@ -28,10 +28,10 @@ const TILE_LAYERS = [
   },
   {
     id: 'hybrid',
-    name: 'Hybrid',
-    url: 'https://tiles.stadiamaps.com/tiles/alidade_hybrid/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-    maxZoom: 20,
+    name: 'Topographic',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+    attribution: '&copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community',
+    maxZoom: 19
   },
 ];
 
@@ -39,17 +39,24 @@ const TILE_LAYERS = [
 const SAMPLE_MARKERS = [
   {
     id: '1',
-    position: [40.7128, -74.0060] as [number, number],
-    title: 'New York City',
-    description: 'The Big Apple',
-    image: 'https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?q=80&w=1000&auto=format&fit=crop',
+    position: [13.7500, 100.4914] as [number, number],
+    title: 'Grand Palace',
+    description: 'Former residence of the Thai monarch, now a major tourist attraction in Bangkok',
+    image: 'https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=1000&auto=format&fit=crop',
   },
   {
     id: '2',
-    position: [40.7580, -73.9855] as [number, number],
-    title: 'Empire State Building',
-    description: 'Iconic skyscraper in Midtown Manhattan',
-    image: 'https://images.unsplash.com/photo-1550664890-c5e34a6cad31?q=80&w=1000&auto=format&fit=crop',
+    position: [13.7437, 100.4882] as [number, number],
+    title: 'Wat Arun',
+    description: 'Temple of Dawn, a stunning Buddhist temple on the Chao Phraya River',
+    image: 'https://images.unsplash.com/photo-1563492065599-3520f775eeed?q=80&w=1000&auto=format&fit=crop',
+  },
+  {
+    id: '3',
+    position: [13.7582, 100.5020] as [number, number],
+    title: 'Khao San Road',
+    description: 'Famous backpacker street with shops, restaurants, and vibrant nightlife',
+    image: 'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?q=80&w=1000&auto=format&fit=crop',
   },
 ];
 
@@ -155,8 +162,8 @@ const Map = () => {
     // This is needed for the markers to show up properly in Next.js
     delete (Icon.Default.prototype as any)._getIconUrl;
     Icon.Default.mergeOptions({
-      iconUrl: '/icons/location.svg',
-      iconRetinaUrl: '/icons/location.svg',
+      iconUrl: '/icons/location.png',
+      iconRetinaUrl: '/icons/location.png',
       shadowUrl: '/icons/shadow.png',
     });
   }, []);
