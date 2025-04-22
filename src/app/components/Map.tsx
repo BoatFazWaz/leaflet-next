@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
 import { Icon, LatLngExpression, Map as LeafletMap } from 'leaflet';
+import Image from 'next/image';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-draw/dist/leaflet.draw.css';
 
@@ -109,9 +110,8 @@ const DrawControl = () => {
     // We need to dynamically import Leaflet Draw because it's not SSR compatible
     const addDrawControl = async () => {
       try {
-        // Remove this line: import 'leaflet-draw/dist/leaflet.draw.css';
-        const L = await import('leaflet-draw');
-        const LeafletDraw = L.default || L;
+        // Import leaflet-draw
+        await import('leaflet-draw');
         
         // Create a new FeatureGroup using Leaflet directly
         const drawnItems = new window.L.FeatureGroup();
@@ -153,6 +153,10 @@ const DrawControl = () => {
   return null;
 };
 
+interface IconPrototype {
+  _getIconUrl?: unknown;
+}
+
 const Map = () => {
   const [selectedTileLayer, setSelectedTileLayer] = useState('standard');
   const mapRef = useRef<LeafletMap | null>(null);
@@ -160,7 +164,7 @@ const Map = () => {
   // Fix for Leaflet icons in Next.js
   useEffect(() => {
     // This is needed for the markers to show up properly in Next.js
-    delete (Icon.Default.prototype as any)._getIconUrl;
+    delete ((Icon.Default.prototype as IconPrototype)._getIconUrl);
     Icon.Default.mergeOptions({
       iconUrl: '/icons/location.png',
       iconRetinaUrl: '/icons/location.png',
@@ -214,11 +218,15 @@ const Map = () => {
                 <h3 className="font-bold text-lg">{marker.title}</h3>
                 <p className="mt-1">{marker.description}</p>
                 {marker.image && (
-                  <img 
-                    src={marker.image} 
-                    alt={marker.title} 
-                    className="mt-2 w-full h-32 object-cover rounded-md"
-                  />
+                  <div className="relative h-32 w-full mt-2">
+                    <Image 
+                      src={marker.image} 
+                      alt={marker.title} 
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      className="rounded-md"
+                    />
+                  </div>
                 )}
               </div>
             </Popup>

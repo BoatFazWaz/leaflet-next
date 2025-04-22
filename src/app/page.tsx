@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { SAMPLE_MARKERS } from "./config/map";
 
 // Dynamically import the Map component with no SSR
 // This is necessary because Leaflet requires the window object
